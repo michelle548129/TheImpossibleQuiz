@@ -1,1 +1,7 @@
 flask
+flask-SQLAlchemy
+SQLAlchemy
+pymysql
+flask_wtf
+wtforms
+pytest
