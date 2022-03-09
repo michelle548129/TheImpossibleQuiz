@@ -1,0 +1,14 @@
+<html lang="en">
+    <head>
+        <title>Awesome ToDo App</title>
+    </head>
+    <body style="background-color: lightblue;">
+        <h1>Todo App</h1>
+        <h2>Home</h2>
+        <p>You have {{ num }} items todo!</p>
+        {% for todo in todos%}
+        {{ todo }}
+        <br>
+        {% endfor %}
+    </body>
+</html>
