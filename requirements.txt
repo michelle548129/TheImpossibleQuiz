@@ -5,3 +5,5 @@ pymysql
 flask_wtf
 wtforms
 pytest
+flask-login 
+python-dotenv
