@@ -9,8 +9,25 @@
             <input type="text" name="item_name" placeholder="Enter candy name"> 
             <input type="number" name="price" placeholder="Enter price"> 
             <input type="text" name="description" placeholder="Enter candy description"> 
+            <input type="number" name="quantity" placeholder="Enter candy quantity">             
             <input type="submit" value="Add to shop">
             <br>
         </form>
+        <h3>List of current items</h3>
+        {% for item in allItems %}
+            <p>{{item.item_name}}
+                {{item.price}}
+                {{item.description}}
+                {{item.quantity}}
+            </p>
+        {% endfor %}
+        {% for item in allItems %}
+        <p>{{item.item_name}}</p>
+        <form method="POST" action="/update_quantity">
+            <input type="hidden" value="{{item.quantity}}" name="oldquantity">
+            <input type="number" value="{{item.quantity}}" name="newquantity">
+            <input type="submit" value="Update quantity">
+        </form>
+        {% endfor %}
     </body>
 </html>
