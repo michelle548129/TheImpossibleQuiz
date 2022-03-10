@@ -14,8 +14,6 @@ def home():
 
 @app.route('/basket', methods=["GET", "POST"])
 def basket():
-   if request.form:
-      print(request.form)
    return render_template('basket.html')
 
 
@@ -40,6 +38,15 @@ def update_quantity():
     oldquantity = request.form.get("oldquantity")
     finalQuantity = item.query.filter_by(quantity=oldquantity).first()
     finalQuantity.quantity = newquantity
+    db.session.commit()
+    return redirect("/")
+
+   
+@app.route("/delete_item", methods=["POST"])
+def delete_item():
+    item_name = request.form.get("item_name")
+    Item = item.query.filter_by(item_name=item_name).first()
+    db.session.delete(Item)
     db.session.commit()
     return redirect("/")
 

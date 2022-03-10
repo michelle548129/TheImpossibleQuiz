@@ -24,5 +24,6 @@ class UpdateItem(FlaskForm):
     submit = SubmitField("Update Item")
 
 class ChooseItem(FlaskForm):
-    chosenItem = SelectField('Item', choices=[])
+    item_name = SelectField('Item', choices=[])
+    price = IntegerField("Price", validators=[DataRequired(message="This field cannot be left blank")])
     submit = SubmitField("Choose Item")
