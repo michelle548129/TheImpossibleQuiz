@@ -1,0 +1,16 @@
+<html lang="en">
+    <head>
+        <title>Candy Shop</title>
+    </head>
+    <body style="background-color: lightblue;">
+        <form method="POST" action="/">
+            <h1>Candy Shop</h1>
+            <a href="{{ url_for('home')}}">Home page</a> || <a href="{{ url_for('basket')}}">Basket</a> || <a href="{{ url_for('shop')}}">Shop</a>
+            <input type="text" name="candy"> 
+            <input type="submit" value="Add to shop">
+            <br>
+            {% block body %}
+            {% endblock body %}
+        </form>
+    </body>
+</html>
