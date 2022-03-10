@@ -3,10 +3,12 @@
         <title>Candy Shop</title>
     </head>
     <body style="background-color: lightblue;">
-        <form method="POST" action="/">
-            <h1>Candy Shop</h1>
+        <h1>Candy Shop</h1>
             <a href="{{ url_for('home')}}">Home page</a> || <a href="{{ url_for('basket')}}">Basket</a> || <a href="{{ url_for('shop')}}">Shop</a>
-            <input type="text" name="candy"> 
+        <form method="POST" action="/">
+            <input type="text" name="item_name" placeholder="Enter candy name"> 
+            <input type="number" name="price" placeholder="Enter price"> 
+            <input type="text" name="description" placeholder="Enter candy description"> 
             <input type="submit" value="Add to shop">
             <br>
             {% block body %}
