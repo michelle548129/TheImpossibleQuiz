@@ -7,9 +7,9 @@ from application.forms import AddItem, UpdateItem, ChooseItem
 @app.route('/home', methods=["GET", "POST"])
 @app.route('/', methods=["GET", "POST"])
 def home():
-   if request.form:
-      print(request.form)
-   return render_template('home.html')
+   allItems = item.query.all()
+   return render_template("home.html", allItems=allItems)
+  
 
 
 @app.route('/basket', methods=["GET", "POST"])
