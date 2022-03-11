@@ -2,7 +2,7 @@ from flask import redirect, url_for, render_template, request
 from application import app, db
 from datetime import date, timedelta
 from application.models import user, purchase, item
-from application.forms import AddItem, UpdateItem, ChooseItem
+from application.forms import AddItem, UpdateItem, ChooseItem, AddUser, CreateRequest
 
 @app.route('/home', methods=["GET", "POST"])
 @app.route('/', methods=["GET", "POST"])
@@ -11,10 +11,17 @@ def home():
    return render_template("home.html", allItems=allItems)
   
 
-
-@app.route('/basket', methods=["GET", "POST"])
-def basket():
-   return render_template('basket.html')
+@app.route('/user_page', methods=["GET", "POST"])
+def user_page():
+   form = AddUser()
+   if request.method == 'POST':
+      user_name = form.user_name.data
+      email = form.email.data
+      address = form.address.data
+      newUser = user(user_name = user_name, email=email, address = address)
+      db.session.add(newUser)
+      db.session.commit()
+   return render_template('user_page.html')
 
 
 @app.route('/admin_page', methods=["GET", "POST"])
@@ -51,4 +58,19 @@ def delete_item():
     return redirect("/")
 
 
+@app.route('/basket', methods=['GET', 'POST'])
+def basket():
+    User = user.query.all()
+    Item = item.query.all()
+    form = CreateRequest()
+    form.user_name.choices.extend([(User.id, str(User)) for User in User])
+    form.item_name.choices.extend([(Item.id, str(Item)) for Item in Item])
+    if request.method == "POST":
+        User = form.user_name.data
+        Item = form.item_name.data
+        new_request = purchase(fk_user_id=user, fk_item_id=item)
+        db.session.add(new_request)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('basket.html', form=form, pageTitle="Create Request")
 
