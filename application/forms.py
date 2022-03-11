@@ -13,14 +13,17 @@ class AddItem(FlaskForm):
     item_name = StringField('Item name', validators=[DataRequired(message="This field cannot be left blank")])
     price = IntegerField("Price", validators=[DataRequired(message="This field cannot be left blank")])
     description = StringField("Item Description", validators=[DataRequired(message="This field cannot be left blank")])
+    quantity = IntegerField("Quantity", validators=[DataRequired(message="This field cannot be left blank")])
     submit = SubmitField("Add Item")
 
 class UpdateItem(FlaskForm):
     item_name = StringField('Item name', validators=[DataRequired(message="This field cannot be left blank")])
     price = IntegerField("Price", validators=[DataRequired(message="This field cannot be left blank")])
     description = StringField("Item Description", validators=[DataRequired(message="This field cannot be left blank")])
+    quantity = IntegerField("Quantity", validators=[DataRequired(message="This field cannot be left blank")])
     submit = SubmitField("Update Item")
 
 class ChooseItem(FlaskForm):
-    chosenItem = SelectField('Item', choices=[])
+    item_name = SelectField('Item', choices=[])
+    price = IntegerField("Price", validators=[DataRequired(message="This field cannot be left blank")])
     submit = SubmitField("Choose Item")

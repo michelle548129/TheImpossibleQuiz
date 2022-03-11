@@ -28,6 +28,7 @@ class item(db.Model):
     item_name = db.Column(db.String(255))
     price = db.Column(db.Numeric(5,2))
     description = db.Column(db.String(255))
+    quantity = db.Column(db.Integer)
     def __repr__(self):
         return f"{self.item_name}"    
 

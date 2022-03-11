@@ -7,29 +7,48 @@ from application.forms import AddItem, UpdateItem, ChooseItem
 @app.route('/home', methods=["GET", "POST"])
 @app.route('/', methods=["GET", "POST"])
 def home():
+   allItems = item.query.all()
+   return render_template("home.html", allItems=allItems)
+  
+
+
+@app.route('/basket', methods=["GET", "POST"])
+def basket():
+   return render_template('basket.html')
+
+
+@app.route('/admin_page', methods=["GET", "POST"])
+def admin_page():
    form = AddItem()
+   allItems = item.query.all()
    if request.method == 'POST':
       item_name = form.item_name.data
       price = form.price.data
       description = form.description.data
-      newItem = item(item_name = item_name, price=price, description = description)
+      quantity = form.quantity.data
+      newItem = item(item_name = item_name, price=price, description = description, quantity = quantity)
       db.session.add(newItem)
       db.session.commit()
-   return render_template('home.html')
+   return render_template('admin_page.html', allItems=allItems)
 
 
-@app.route('/shop', methods=["GET", "POST"])
-def shop():
-   if request.form:
-      item = Item(item_name=request.form.get("Item Name"))
-      db.session.add(item)
-      db.session.commit()
-   return render_template('shop.html')
+@app.route("/update_quantity", methods=["POST"])
+def update_quantity():
+    newquantity = request.form.get("newquantity")
+    oldquantity = request.form.get("oldquantity")
+    finalQuantity = item.query.filter_by(quantity=oldquantity).first()
+    finalQuantity.quantity = newquantity
+    db.session.commit()
+    return redirect("/")
 
-@app.route('/basket', methods=["GET", "POST"])
-def basket():
-   if request.form:
-      print(request.form)
-   return render_template('basket.html')
+   
+@app.route("/delete_item", methods=["POST"])
+def delete_item():
+    item_name = request.form.get("item_name")
+    Item = item.query.filter_by(item_name=item_name).first()
+    db.session.delete(Item)
+    db.session.commit()
+    return redirect("/")
+
 
 

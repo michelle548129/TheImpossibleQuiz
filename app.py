@@ -1,6 +1,6 @@
 from flask import Flask
 from application import app
-from flask import request
+from flask import request, redirect
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 
