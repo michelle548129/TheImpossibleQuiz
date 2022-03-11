@@ -4,12 +4,16 @@
     </head>
     <body style="background-color: lightblue;">
         <h1>Candy Shop</h1>
-            <a href="{{ url_for('home')}}">Home page</a> || <a href="{{ url_for('basket')}}">Basket</a> || <a href="{{ url_for('admin_page')}}">Admin</a>
+            <a href="{{ url_for('home')}}">Home page</a> || <a href="{{ url_for('basket')}}">Basket</a> || <a href="{{ url_for('admin_page')}}">Admin</a> || <a href="{{ url_for('user_page')}}">User</a>
+            
             {% for item in allItems %}
             <p>{{item.item_name}}
                 {{item.price}}
                 {{item.description}}
             </p>
+            <form method="POST" action="/add">
+                <input type="submit" value="Add to Basket">
+              </form>
             {% endfor %}
             
     </body>
