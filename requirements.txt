@@ -12,3 +12,4 @@ flask-testing
 DateTime
 gunicorn
 selenium
+pytest-cov
