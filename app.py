@@ -3,7 +3,6 @@ from application import app
 from flask import request, redirect
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
-
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, SelectField, RadioField, HiddenField, StringField, IntegerField, FloatField
 from wtforms.validators import InputRequired, Length, Regexp, NumberRange

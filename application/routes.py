@@ -47,6 +47,12 @@ def update_quantity():
     finalQuantity.quantity = newquantity
     db.session.commit()
     return redirect("/")
+   
+@app.route("/purchase", methods=["POST"])
+def purchase():
+   if request.form:
+      print(request.form)
+   return render_template('purchase.html')
 
    
 @app.route("/delete_item", methods=["POST"])
