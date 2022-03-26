@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
+                sh "rm tests/test_int*"
                 sh "bash test.sh"
             }
         }
