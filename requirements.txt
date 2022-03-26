@@ -13,3 +13,5 @@ DateTime
 gunicorn
 selenium
 pytest-cov
+markupsafe
+itsdangerous
