@@ -11,7 +11,7 @@ services:
     networks:
       - app-net
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: "password123"
       MYSQL_DATABASE: app-db
   flask-app:
     container_name: flask-app
@@ -20,8 +20,8 @@ services:
     networks:
       - app-net
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      SECRET_KEY: ${SECRET_KEY}
+      MYSQL_ROOT_PASSWORD: "password123"
+      SECRET_KEY: "this is my secret key"
     depends_on:
       - "mysql"
   nginx:
