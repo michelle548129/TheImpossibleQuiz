@@ -1,0 +1,17 @@
+flask
+flask-SQLAlchemy
+SQLAlchemy
+pymysql
+flask_wtf
+wtforms
+pytest
+flask-login 
+python-dotenv
+flask_bootstrap
+flask-testing
+DateTime
+gunicorn
+selenium
+pytest-cov
+markupsafe
+itsdangerous
