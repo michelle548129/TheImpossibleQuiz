@@ -1,0 +1,18 @@
+<html lang="en">
+    <head>
+        <title>Candy Shop</title>
+    </head>
+    <body style="background-color: lightblue;">
+        <h1>Candy Shop</h1>
+            <a href="{{ url_for('home')}}">Home page</a> || <a href="{{ url_for('basket')}}">Basket</a> || <a href="{{ url_for('admin_page')}}">Admin</a> || <a href="{{ url_for('user_page')}}">User</a>
+            <h3>Register to shop!</h3>
+            <form method="POST" action="/user_page">
+                <input type="text" name="user_name" placeholder="Enter your name"> 
+                <input type="text" name="email" placeholder="Enter your email"> 
+                <input type="text" name="address" placeholder="Enter your address">             
+                <input type="submit" value="Register">
+                <br>
+            </form>
+        
+    </body>
+</html>
