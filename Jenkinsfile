@@ -3,10 +3,8 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                dir('flask-app') {
-                    sh "rm tests/test_int*"
-                    sh "bash test.sh"
-                }
+                sh "rm tests/test_int*"
+                sh "bash test.sh"
             }
         }
         stage('build and push') {
@@ -14,7 +12,7 @@ pipeline {
                 DOCKER_CREDS = credentials('docker-creds')
             }
             steps{
-                sh "/bin/bash -c 'docker rmi \$(docker images -q)'"
+                sh "bash -c 'docker rmi $(docker images -q)'"
                 sh "docker-compose build --parallel"
                 sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
                 sh "docker-compose push"
