@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mysql:
     container_name: mysql
-    image: michelle548129/theimpossiblequiz:latest
+    image: michelle548129/theimpossiblequiz-db:latest
     build: ./db
     volumes:
       - type: volume
@@ -15,7 +15,7 @@ services:
       MYSQL_DATABASE: app-db
   flask-app:
     container_name: flask-app
-    image: michelle548129/theimpossiblequiz:v2
+    image: michelle548129/theimpossiblequiz-app:v2
     build: ./flask-app
     networks:
       - app-net
