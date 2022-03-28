@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mysql:
     container_name: mysql
-    image: michelle548129/theimpossiblequiz:latest
+    image: michelle548129/theimpossiblequiz-db:latest
     build: ./db
     volumes:
       - type: volume
