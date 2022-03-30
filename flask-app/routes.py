@@ -7,7 +7,7 @@ from application.forms import AddItem, UpdateItem, ChooseItem, AddUser, CreateRe
 @app.route('/home', methods=["GET", "POST"])
 @app.route('/', methods=["GET", "POST"])
 def home():
-  # allItems = item.query.all()
+   allItems = item.query.all()
    return render_template("home.html", allItems=allItems)
   
 
