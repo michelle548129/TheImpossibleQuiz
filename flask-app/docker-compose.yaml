@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mysql:
     container_name: mysql
-    image: michelle548129/theimpossiblequiz:latest
+    image: michelle548129/theimpossiblequiz-db:latest
     build: ./db
     volumes:
       - type: volume
@@ -11,8 +11,8 @@ services:
     networks:
       - app-net
     environment:
-      MYSQL_ROOT_PASSWORD: "password123"
-      MYSQL_DATABASE: app-db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_URI}
   flask-app:
     container_name: flask-app
     image: michelle548129/theimpossiblequiz-app:v2
@@ -20,8 +20,8 @@ services:
     networks:
       - app-net
     environment:
-      MYSQL_ROOT_PASSWORD: "password123"
-      SECRET_KEY: "this is my secret key"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
       - "mysql"
   nginx:
